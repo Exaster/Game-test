@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbhnkr660y54e"]
+
+[ext_resource type="Script" path="res://scripts/placeholder.gd" id="1_5g1w7"]
+[ext_resource type="Texture2D" uid="uid://be3jvlpl4snvc" path="res://assets/images/icon.png" id="2_vkqr6"]
+[ext_resource type="Texture2D" uid="uid://b8pdur46y02f8" path="res://assets/images/icon_2.png" id="3_0to8x"]
+[ext_resource type="FontFile" uid="uid://dxpj0aagfxrbh" path="res://assets/fonts/PixelOperator8.ttf" id="3_kpvhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj1uc"]
+size = Vector2(25, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1axep"]
+atlas = ExtResource("2_vkqr6")
+region = Rect2(0, 0, 212, 238)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d72bf"]
+atlas = ExtResource("3_0to8x")
+region = Rect2(0, 0, 212, 238)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bcx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d72bf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Hint" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_5g1w7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_nj1uc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(0.0754716, 0.0655871)
+sprite_frames = SubResource("SpriteFrames_5bcx8")
+autoplay = "default"
+frame_progress = 0.435066
+
+[node name="Label" type="Label" parent="."]
+offset_left = -61.0
+offset_top = -26.0
+offset_right = 56.0
+offset_bottom = -3.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_kpvhh")
+theme_override_font_sizes/font_size = 8
+text = "Example text
+"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

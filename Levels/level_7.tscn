@@ -1,0 +1,169 @@
+[gd_scene load_steps=19 format=3 uid="uid://tbipwfseir77"]
+
+[ext_resource type="Script" path="res://scripts/cutsene_ending.gd" id="1_lwlxr"]
+[ext_resource type="VideoStream" path="res://assets/cutscenes/outro.ogv" id="2_q0ut4"]
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="3_nf7w5"]
+[ext_resource type="Texture2D" uid="uid://3hm4k83hdc6c" path="res://assets/images/noise.png" id="4_r0tfg"]
+[ext_resource type="Texture2D" uid="uid://dfurysnpqhyv1" path="res://assets/images/background.png" id="5_jeimw"]
+[ext_resource type="Texture2D" uid="uid://dnlh2ghe01o8y" path="res://assets/images/Clopotenko.png" id="6_u63rd"]
+[ext_resource type="Texture2D" uid="uid://g4c4i5xbhpqp" path="res://assets/images/Clopotenko 3.png" id="7_0ehnm"]
+[ext_resource type="Texture2D" uid="uid://bsgldtedipbuk" path="res://assets/images/Clopotenko_2.png" id="8_8evmv"]
+[ext_resource type="Texture2D" uid="uid://be3jvlpl4snvc" path="res://assets/images/icon.png" id="9_24bjv"]
+[ext_resource type="Texture2D" uid="uid://b8pdur46y02f8" path="res://assets/images/icon_2.png" id="10_5gjx2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csmv6"]
+shader = ExtResource("3_nf7w5")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 0.6
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+shader_parameter/noise_texture = ExtResource("4_r0tfg")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bojb3"]
+atlas = ExtResource("5_jeimw")
+region = Rect2(288, 162, 288, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21dwx"]
+atlas = ExtResource("6_u63rd")
+region = Rect2(0, 0, 408, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwbnk"]
+atlas = ExtResource("7_0ehnm")
+region = Rect2(0, 0, 408, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tiiw"]
+atlas = ExtResource("8_8evmv")
+region = Rect2(0, 0, 408, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74m70"]
+atlas = ExtResource("9_24bjv")
+region = Rect2(0, 0, 212, 238)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8dgi"]
+atlas = ExtResource("10_5gjx2")
+region = Rect2(0, 0, 212, 238)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ovsx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bojb3")
+}],
+"loop": true,
+"name": &"background",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwbnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tiiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tiiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwbnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dwx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74m70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8dgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74m70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74m70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74m70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8dgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8dgi")
+}],
+"loop": true,
+"name": &"dog",
+"speed": 1.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lwlxr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(711, 610)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -230.0
+offset_right = 1690.0
+offset_bottom = 1088.0
+stream = ExtResource("2_q0ut4")
+autoplay = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="VideoStreamPlayer"]
+layer = 6
+offset = Vector2(100, 100)
+transform = Transform2D(1, 0, 0, 1, 100, 100)
+
+[node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer/CanvasLayer2"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_csmv6")
+use_parent_material = true
+anchors_preset = -1
+anchor_left = -1.51997
+anchor_top = -1.44907
+anchor_right = -1.51997
+anchor_bottom = -1.44907
+offset_left = -46.0
+offset_top = -196.0
+offset_right = 3055.0
+offset_bottom = 1744.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedClopotenko2" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(853, 171)
+scale = Vector2(23.1875, 26.1605)
+sprite_frames = SubResource("SpriteFrames_8ovsx")
+animation = &"background"
+autoplay = "background"

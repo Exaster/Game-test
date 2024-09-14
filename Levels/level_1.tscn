@@ -1,0 +1,243 @@
+[gd_scene load_steps=21 format=3 uid="uid://b2q3f4qk6hbmf"]
+
+[ext_resource type="Texture2D" uid="uid://dnlh2ghe01o8y" path="res://assets/images/Clopotenko.png" id="3_ad18i"]
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="3_xgqyh"]
+[ext_resource type="Texture2D" uid="uid://g4c4i5xbhpqp" path="res://assets/images/Clopotenko 3.png" id="4_47x0v"]
+[ext_resource type="AudioStream" uid="uid://bfvb33m7wkhwp" path="res://assets/sounds/Clopotenko angry.wav" id="6_cxa6k"]
+[ext_resource type="PackedScene" uid="uid://b364uliue6ux3" path="res://scenes/platform.tscn" id="6_p6yqt"]
+[ext_resource type="PackedScene" uid="uid://colon3l2hg8xd" path="res://scenes/player.tscn" id="9_gtwx0"]
+[ext_resource type="Texture2D" uid="uid://dfurysnpqhyv1" path="res://assets/images/background.png" id="9_t6d1v"]
+[ext_resource type="PackedScene" uid="uid://byu6g7blxf4ts" path="res://scenes/teleporter.tscn" id="10_d7vxv"]
+
+[sub_resource type="GDScript" id="GDScript_55vag"]
+script/source = "extends Node2D
+
+
+# Onready variable to reference the AudioStreamPlayer
+@onready var audio_player: AudioStreamPlayer = $Player/AudioStreamPlayer
+
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $Player/AudioStreamPlayer2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	# Play the audio when the scene starts
+	audio_player.play()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpnqb"]
+shader = ExtResource("3_xgqyh")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oem5n"]
+atlas = ExtResource("3_ad18i")
+region = Rect2(0, 0, 408, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oho1"]
+atlas = ExtResource("4_47x0v")
+region = Rect2(0, 0, 408, 612)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3om1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oho1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oho1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oho1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oem5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oho1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_earrh"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0454545, 0.538961, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.234787, 0.234787, 0.234787, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bqblo"]
+gradient = SubResource("Gradient_earrh")
+fill = 1
+fill_from = Vector2(0.550459, 0.504587)
+fill_to = Vector2(0.573394, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfir6"]
+atlas = ExtResource("9_t6d1v")
+region = Rect2(288, 486, 288, 162)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aeqto"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfir6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Environment" id="Environment_fye6u"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_bloom = 0.09
+glow_blend_mode = 0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jmovc"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cp2ut"]
+polygon = PackedVector2Array(-133.12, 43.6333, -131.438, 48.0599, -131.999, 51.8541, -131.718, 51.2217, -131.158, 48.0599)
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_55vag")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("9_gtwx0")]
+z_index = 1
+position = Vector2(-79, -29)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+modulate = Color(0.349445, 0.331439, 0.65638, 1)
+material = SubResource("ShaderMaterial_tpnqb")
+zoom = Vector2(5, 5)
+limit_bottom = 5
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player/Camera2D"]
+z_index = -1
+position = Vector2(1, -46)
+scale = Vector2(0.502451, 0.502451)
+sprite_frames = SubResource("SpriteFrames_t3om1")
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+position = Vector2(-1, -11)
+energy = 0.7
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_bqblo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(79, 29)
+stream = ExtResource("6_cxa6k")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("6_cxa6k")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Player"]
+position = Vector2(206, -33)
+scale = Vector2(1.73437, 1)
+energy = 2.22
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_bqblo")
+texture_scale = 3.28
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Player"]
+z_index = -7
+position = Vector2(-1, -11)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_aeqto")
+
+[node name="Platform" parent="." instance=ExtResource("6_p6yqt")]
+position = Vector2(-89, 4)
+scale = Vector2(200, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fye6u")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0, 0, 0, 1)
+energy = 0.72
+blend_mode = 2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-80, -40)
+occluder = SubResource("OccluderPolygon2D_jmovc")
+
+[node name="Next Level" parent="." instance=ExtResource("10_d7vxv")]
+position = Vector2(2409, -16)
+
+[node name="Next Level2" parent="." instance=ExtResource("10_d7vxv")]
+visible = false
+position = Vector2(2409, -40)
+
+[node name="Next Level3" parent="." instance=ExtResource("10_d7vxv")]
+visible = false
+position = Vector2(2409, -64)
+
+[node name="Next Level4" parent="." instance=ExtResource("10_d7vxv")]
+visible = false
+position = Vector2(2410, -88)
+
+[node name="Next Level5" parent="." instance=ExtResource("10_d7vxv")]
+visible = false
+position = Vector2(2414, -115)
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(2885, -90)
+scale = Vector2(3.56822, 1.58136)
+energy = 2.22
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_bqblo")
+texture_scale = 9.26
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D3"]
+occluder = SubResource("OccluderPolygon2D_cp2ut")
+
+[node name="Next Level6" parent="." instance=ExtResource("10_d7vxv")]
+visible = false
+position = Vector2(-3619, 17)
+scale = Vector2(50, 1)

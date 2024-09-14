@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfvb33m7wkhwp"
+path="res://.godot/imported/Clopotenko angry.wav-78d5fd0e26d4353d97729af8f6cb1e2e.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Clopotenko angry.wav"
+dest_files=["res://.godot/imported/Clopotenko angry.wav-78d5fd0e26d4353d97729af8f6cb1e2e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,27 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://wcetfincey0s"]
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_7vgd3"]
+resource_name = "Phaser"
+
+[resource]
+bus/0/volume_db = 6.02
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -4.25003
+bus/1/send = &"Master"
+bus/2/name = &"SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -5.04224
+bus/2/send = &"Music"
+bus/2/effect/0/effect = SubResource("AudioEffectPhaser_7vgd3")
+bus/2/effect/0/enabled = true
+bus/3/name = &"Replicas"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -0.923751
+bus/3/send = &"Master"

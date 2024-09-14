@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mexofb3uw77c"
+path="res://.godot/imported/dark monster.ogg-03b64fd0b626e8dcc18f84f2d6837964.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/dark monster.ogg"
+dest_files=["res://.godot/imported/dark monster.ogg-03b64fd0b626e8dcc18f84f2d6837964.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

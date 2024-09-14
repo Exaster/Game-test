@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpayeunw8npab"]
+
+[ext_resource type="VideoStream" path="res://intro.ogv" id="1_h3ire"]
+[ext_resource type="Script" path="res://scripts/intro.gd" id="1_s8li4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_s8li4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="TextureRect"]
+auto_translate_mode = 2
+modulate = Color(0.540017, 0.223628, 0.795839, 1)
+top_level = true
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.226
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -532.352
+offset_top = -484.0
+offset_right = -174.498
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_h3ire")
+volume_db = 1.8
+bus = &"SFX"
