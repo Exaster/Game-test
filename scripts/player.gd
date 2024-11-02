@@ -5,18 +5,16 @@ const JUMP_VELOCITY = -300.0
 const DASH_SPEED = 300.0  
 const DASH_DURATION = 0.3  
 const DASH_COOLDOWN = 3.0  
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var is_dashing = false
+var dash_time_left = 0.0
+var dash_cooldown_time_left = 0.0
 
 @onready var powerup_sound: AudioStreamPlayer2D = $PowerupSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var animated_sprite: AnimatedSprite2D = %PlayerSprite
-
-
-var is_dashing = false
-var dash_time_left = 0.0
-var dash_cooldown_time_left = 0.0
 
 func _physics_process(delta):
 	update_dash_cooldown(delta)
